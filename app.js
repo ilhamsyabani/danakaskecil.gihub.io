@@ -183,17 +183,3 @@ function updateData(index) {
 }
 
 
-function generatePDF() {
-    // Create a new jsPDF instance
-    window.jsPDF = window.jspdf.jsPDF
-    const pdf = new jsPDF();
-
-    // Get the content of the <div> element that you want to convert to PDF
-    const divContent = document.getElementById('pdf');
-
-    // Use jsPDF's fromHTML method to add the content to the PDF
-    pdf.fromHTML(divContent, 15, 15);
-
-    // Save or display the PDF
-    pdf.save('output.pdf');
-}

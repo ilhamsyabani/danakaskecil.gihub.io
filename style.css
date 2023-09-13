@@ -9,6 +9,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    font-size: 16px;
 }
 
 /* Kontainer utama */
@@ -33,6 +34,12 @@ h4 {
     font-size: 18px;
     margin-bottom: 10px;
     margin-top: 20px;
+}
+
+table{
+    font-size: 14px;
+    margin: 0;
+    padding: 12px;
 }
 
 /* Formulir data */
@@ -100,20 +107,19 @@ button[type="submit"]:hover {
 
 
 /* Tabel data */
-#data-table {
+.data-table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
 }
 
-#data-table th,
-#data-table td {
+.data-table th,
+.data-table td {
     padding: 8px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
-#data-table td {
+.data-table td {
     padding: 4px;
     border: 1px solid #ddd;
     text-align: left;

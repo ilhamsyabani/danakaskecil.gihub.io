@@ -7,6 +7,7 @@
     <title>Laporan Dana Kas Kecil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
 
                     <div class="form-row">
                         <label for="penerimaan">Penerimaan</label>
-                        <input type="text" id="penerimaan" name="penerimaan" >
+                        <input type="text" id="penerimaan" name="penerimaan">
                     </div>
 
                 </div>
@@ -42,7 +43,7 @@
 
                     <div class="form-row">
                         <label for="pengeluaran">Pengeluaran</label>
-                        <input type="text" id="pengeluaran" name="pengeluaran" >
+                        <input type="text" id="pengeluaran" name="pengeluaran">
                     </div>
 
                     <div class="form-row">
@@ -61,8 +62,8 @@
                         <input type="text" id="nilai" name="nilai" required>
                     </div>
 
-                    <button  type="submit" id="submit" onclick="addData()" >Simpan</button>
-                    <button  type="submit" id="update" onclick="AddData()" >Perbarui</button>
+                    <button type="submit" id="submit" onclick="addData()">Simpan</button>
+                    <button type="submit" id="update" onclick="AddData()">Perbarui</button>
 
                 </div>
 
@@ -71,11 +72,39 @@
 
         <hr>
 
-        <div id="tabel-lapran-data">
-            <h4>Data yang Disimpan</h4>
+        <div id="contentToConvert">
+            <div style="text-align: center; margin: auto;">
+                <h4>Laporan Dana Kas Kecil</h4>
+                <input style="width: 40%;" type="text" id="namapt" name="namapt" required><br />
+            </div>
             <button type="submit" id="tambah-data-laporan">Tambah Data</button>
-            <table id="data-table" border="1">
+            <button type="submit" id="generatePdfButton">Export Data</button>
+            <table id="data-table" class="data-table" border="1">
                 <thead>
+                    <tr>
+                        <th rowspan="2" style="width: 100px">Tanggal</th>
+                        <th rowspan="2" style="width: 80px">No Bukti</th>
+                        <th rowspan="2" style="width: 200px">Keterangan</th>
+                        <th rowspan="2" style="width: 100px">Penerimaan</th>
+                        <th rowspan="2" style="width: 100px">Pengeluaran</th>
+                        <th colspan="5">Akun</th>
+                        <th rowspan="2" style="width: 80px">Tindakan</th>
+                    </tr>
+                    <tr>
+                        <th style="width: 100px">Konsumsi</th>
+                        <th style="width: 100px">Transportasi</th>
+                        <th style="width: 100px">ATK</th>
+                        <th style="width: 100px">Iklan</th>
+                        <th>Lainnya</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data akan ditambahkan ke sini menggunakan JavaScript -->
+
+                </tbody>
+            </table>
+            <table class="data-table" border="1">
+                <thead style="display:none;">
                     <tr>
                         <th rowspan="2">Tanggal</th>
                         <th rowspan="2">No Bukti</th>
@@ -94,9 +123,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Data akan ditambahkan ke sini menggunakan JavaScript -->
                     <tr>
-                        <td colspan="3">Jumlah</td>
+                        <td colspan="3" style="width: 690px">Jumlah</td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
@@ -104,7 +132,7 @@
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
-                        <td></td>
+                        <td style="width: 80px"></td>
                     </tr>
                     <tr>
                         <td colspan="3">Saldo</td>
@@ -129,6 +157,7 @@
                         <td></td>
                     </tr>
                 </tbody>
+                </tbody>
             </table>
             <div class="foter-column">
                 <div class="foter-row">
@@ -147,6 +176,21 @@
         </div>
     </div>
     <script src="app.js"></script>
+    <script>
+        document.getElementById('generatePdfButton').addEventListener('click', function () {
+            // Select the div element you want to convert to PDF.
+            const content = document.getElementById('contentToConvert');
+    
+            // Create an HTML2PDF instance.
+            const pdfOptions = { margin: 10, filename: 'generated.pdf' };
+            const element = content;
+            const pdf = html2pdf(element, pdfOptions);
+    
+            // Generate the PDF and save it or trigger a download.
+            pdf.toPdf().from(element).save();
+        });
+    </script>    
+    
 </body>
 
 </html>

@@ -45,27 +45,27 @@ function showData() {
         if (element.akun === "1") {
             html += "<td>" + element.nilai + "</td>";
         } else {
-            html += "<td>" + " "+ "</td>"
+            html += "<td>" + " " + "</td>"
         }
         if (element.akun === "2") {
             html += "<td>" + element.nilai + "</td>";
-        } else{
-            html += "<td>" + " "+ "</td>"
-        } 
+        } else {
+            html += "<td>" + " " + "</td>"
+        }
         if (element.akun === "3") {
             html += "<td>" + element.nilai + "</td>";
         } else {
-            html += "<td>" + " "+ "</td>"
+            html += "<td>" + " " + "</td>"
         }
         if (element.akun === "4") {
             html += "<td>" + element.nilai + "</td>";
         } else {
-            html += "<td>" + " "+ "</td>"
+            html += "<td>" + " " + "</td>"
         }
         if (element.akun === "5") {
             html += "<td>" + element.nilai + "</td>";
         } else {
-            html += "<td>" + " "+ "</td>"
+            html += "<td>" + " " + "</td>"
         }
         html += '<td><button class="delete-btn" onclick="deleteData(' + index + ')">Hapus</button><button class="edit-btn" onclick="updateData(' + index + ')">Edit</button></td>';
         html += "</tr>";
@@ -119,7 +119,7 @@ function addData() {
 }
 
 //Delete data
-function deleteData(index){
+function deleteData(index) {
     var reportList;
     if (localStorage.getItem("reportList") == null) {
         reportList = [];
@@ -180,4 +180,20 @@ function updateData(index) {
             document.getElementById('form-laporan-kas-kecil').style.display = "none";
         }
     }
+}
+
+
+function generatePDF() {
+    // Create a new jsPDF instance
+    window.jsPDF = window.jspdf.jsPDF
+    const pdf = new jsPDF();
+
+    // Get the content of the <div> element that you want to convert to PDF
+    const divContent = document.getElementById('pdf');
+
+    // Use jsPDF's fromHTML method to add the content to the PDF
+    pdf.fromHTML(divContent, 15, 15);
+
+    // Save or display the PDF
+    pdf.save('output.pdf');
 }

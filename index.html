@@ -15,7 +15,7 @@
         <hr>
         <div class="form-data" id="form-laporan-kas-kecil">
             <h4>Formulir Data</h4>
-            <form id="data-form" class="form-flex">
+            <div id="data-form" class="form-flex">
                 <div class="form-column">
                     <div class="form-row">
                         <label for="tanggal">Tanggal</label>
@@ -61,11 +61,12 @@
                         <input type="text" id="nilai" name="nilai" required>
                     </div>
 
-                    <button type="submit">Simpan</button>
+                    <button  type="submit" id="submit" onclick="addData()" >Simpan</button>
+                    <button  type="submit" id="update" onclick="AddData()" >Perbarui</button>
 
                 </div>
 
-            </form>
+            </div>
         </div>
 
         <hr>

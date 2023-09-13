@@ -159,13 +159,27 @@ div.div-item {
 }
 
 /* Styling tambahan untuk tombol */
-div.div-item button {
+.delete-btn{
     background-color: red; /* Ganti warna latar belakang sesuai kebutuhan Anda */
     color: white; /* Ganti warna teks sesuai kebutuhan Anda */
     border: none;
+    margin: 4px;
     border-radius: 3px;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+.edit-btn{
+    background-color:greenyellow; /* Ganti warna latar belakang sesuai kebutuhan Anda */
+    color: white; /* Ganti warna teks sesuai kebutuhan Anda */
+    border: none;
+    margin: 4px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#update{
+    display: none;
 }
 
 

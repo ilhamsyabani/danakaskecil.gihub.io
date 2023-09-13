@@ -7,7 +7,9 @@
     <title>Laporan Dana Kas Kecil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -161,16 +163,15 @@
             </table>
             <div class="foter-column">
                 <div class="foter-row">
-                    <label for="date">tanggal</label>
-                    <input type="date" id="tanggal" name="tanggal" required>
-                    <label for="nama">nama</label>
-                    <input type="text" id="bukti" name="bukti" required>
+                    <p>mengetahui,<br>pimpinan </p>
+                    <input type="text" id="bukti" name="bukti" placeholder="nama">
                 </div>
-                <div class="foter-row">
-                    <label for="date">tanggal</label>
-                    <input type="date" id="tanggal" name="tanggal" required>
-                    <label for="nama">nama</label>
-                    <input type="text" id="bukti" name="bukti" required>
+                <div class="foter-row" style="text-align: center;">
+                    <div>
+                        <input type="text" id="bukti" name="bukti" placeholder="kota">,
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
+                    <input type="text" id="bukti" name="bukti" placeholder="nama">
                 </div>
             </div>
         </div>
@@ -180,17 +181,20 @@
         document.getElementById('generatePdfButton').addEventListener('click', function () {
             // Select the div element you want to convert to PDF.
             const content = document.getElementById('contentToConvert');
-    
+
             // Create an HTML2PDF instance.
-            const pdfOptions = { margin: 10, filename: 'generated.pdf' };
+            const pdfOptions = {
+                margin: 10,
+                filename: 'generated.pdf'
+            };
             const element = content;
             const pdf = html2pdf(element, pdfOptions);
-    
+
             // Generate the PDF and save it or trigger a download.
             pdf.toPdf().from(element).save();
         });
-    </script>    
-    
+    </script>
+
 </body>
 
 </html>

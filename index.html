@@ -4,111 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Keuangan</title>
+    <title>Laporan Dana Kas Kecil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Aplikasi Keuangan</h1>
+        <h2>Latihan Pembuatan Laporan Kas Kecil</h2>
+        <hr>
+        <div class="form-data" id="form-laporan-kas-kecil">
+            <h4>Formulir Data</h4>
+            <form id="data-form" class="form-flex">
+                <div class="form-column">
+                    <div class="form-row">
+                        <label for="tanggal">Tanggal</label>
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
 
-        <!-- Tombol Menu -->
-        <button id="jenis-anggaran">Jenis Anggaran</button>
-        <button id="laporan-kas-kecil">Laporan Kas Kecil</button>
+                    <div class="form-row">
+                        <label for="bukti">No Bukti</label>
+                        <input type="text" id="bukti" name="bukti" required>
+                    </div>
 
-        <div><hr></div>
+                    <div class="form-row">
+                        <label for="keterangan">Keterangan</label>
+                        <input type="text" id="keterangan" name="keterangan" required>
+                    </div>
 
-        <!-- Formulir Jenis Anggaran -->
-        <div id="jenis-anggaran-form">
-            <h4>Masukan Jenis Anggaran</h4>
-            <div class="input-container">
-                <input type="text" id="task" placeholder="Tambahkan tugas">
-                <button id="addTask">Tambah</button>
-            </div>
+                    <div class="form-row">
+                        <label for="penerimaan">Penerimaan</label>
+                        <input type="text" id="penerimaan" name="penerimaan" >
+                    </div>
+
+                </div>
+                <div class="form-column">
+
+                    <div class="form-row">
+                        <label for="pengeluaran">Pengeluaran</label>
+                        <input type="text" id="pengeluaran" name="pengeluaran" >
+                    </div>
+
+                    <div class="form-row">
+                        <label for="akun">Akun</label>
+                        <select id="akun" name="akun">
+                            <option value="1">Konsumsi</option>
+                            <option value="2">Transportasi</option>
+                            <option value="3">ATK</option>
+                            <option value="4">Iklan</option>
+                            <option value="5">Lainnya</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="nilai">Nilai</label>
+                        <input type="text" id="nilai" name="nilai" required>
+                    </div>
+
+                    <button type="submit">Simpan</button>
+
+                </div>
+
+            </form>
         </div>
 
-        <div id="jenis-anggaran-table"> 
-            <h4>Daftar Jenis Anggaran</h4>
-            <ul id="taskList"></ul>
-            <hr>
-        </div>
-        
-        <div id="table-kas-kecil">
-            <button id="addData">Tambah</button>
-            <table>
+        <hr>
+
+        <div id="tabel-lapran-data">
+            <h4>Data yang Disimpan</h4>
+            <button type="submit" id="tambah-data-laporan">Tambah Data</button>
+            <table id="data-table" border="1">
                 <thead>
                     <tr>
                         <th rowspan="2">Tanggal</th>
-                        <th rowspan="2">No. Bukti</th>
+                        <th rowspan="2">No Bukti</th>
                         <th rowspan="2">Keterangan</th>
-                        <th rowspan="2">Debit</th>
-                        <th rowspan="2">Kredit</th>
-                        <th colspan="3">Jenis Anggaran</th>
-                        <th rowspan="2">Aksi</th>
+                        <th rowspan="2">Penerimaan</th>
+                        <th rowspan="2">Pengeluaran</th>
+                        <th colspan="5">Akun</th>
+                        <th rowspan="2">Tindakan</th>
                     </tr>
                     <tr>
-                        <th>Anggaran1</th>
-                        <th>Anggaran2</th>
-                        <th>Anggaran3</th>
+                        <th>Konsumsi</th>
+                        <th>Transportasi</th>
+                        <th>ATK</th>
+                        <th>Iklan</th>
+                        <th>Lainnya</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Data akan ditambahkan ke sini menggunakan JavaScript -->
                     <tr>
-                        <td colspan="3">Saldo</td>
-                        <td><input type="text" id="saldoDebit" placeholder=""></td>
-                        <td><input type="text" id="saldoKredit" placeholder=""></td>
-                        <td><input type="text" id="saldo1" placeholder=""></td>
-                        <td><input type="text" id="saldo2" placeholder=""></td>
-                        <td><input type="text" id="saldo3" placeholder=""></td>
-                        <td></td>
-                    </tr>
-                    <tr>
                         <td colspan="3">Jumlah</td>
-                        <td><input type="text" id="saldoDebit" placeholder=""></td>
-                        <td><input type="text" id="saldoKredit" placeholder=""></td>
-                        <td><input type="text" id="saldo1" placeholder=""></td>
-                        <td><input type="text" id="saldo2" placeholder=""></td>
-                        <td><input type="text" id="saldo3" placeholder=""></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="3">Jumlah Periode ini</td>
-                        <td><input type="text" id="saldoDebit" placeholder=""></td>
-                        <td><input type="text" id="saldoKredit" placeholder=""></td>
-                        <td><input type="text" id="saldo1" placeholder=""></td>
-                        <td><input type="text" id="saldo2" placeholder=""></td>
-                        <td><input type="text" id="saldo3" placeholder=""></td>
+                        <td colspan="3">Saldo</td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Pengisian Kembali Kas Kecil Periode Sebelumnya</td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
+                        <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td></td>
                     </tr>
                 </tbody>
             </table>
+            <div class="foter-column">
+                <div class="foter-row">
+                    <label for="date">tanggal</label>
+                    <input type="date" id="tanggal" name="tanggal" required>
+                    <label for="nama">nama</label>
+                    <input type="text" id="bukti" name="bukti" required>
+                </div>
+                <div class="foter-row">
+                    <label for="date">tanggal</label>
+                    <input type="date" id="tanggal" name="tanggal" required>
+                    <label for="nama">nama</label>
+                    <input type="text" id="bukti" name="bukti" required>
+                </div>
+            </div>
         </div>
-        <hr>
     </div>
-
     <script src="app.js"></script>
-    <script>
-        const jenisAnggaranButton = document.getElementById('jenis-anggaran');
-        const laporanKasKecilButton = document.getElementById('laporan-kas-kecil');
-        const jenisAnggaranForm = document.getElementById('jenis-anggaran-form');
-        const jenisAnggaranTable = document.getElementById('jenis-anggaran-table');
-
-        jenisAnggaranButton.addEventListener('click', () => {
-            // Menampilkan formulir dan tabel jenis anggaran
-            jenisAnggaranForm.style.display = 'block';
-            jenisAnggaranTable.style.display = 'block';
-
-            // Menyembunyikan formulir atau tabel lain jika ada
-            // Misalnya, menyembunyikan formulir dan tabel laporan kas kecil jika diperlukan
-        });
-
-        laporanKasKecilButton.addEventListener('click', () => {
-            // Menampilkan formulir dan tabel laporan kas kecil
-            // Disembunyikan formulir dan tabel jenis anggaran jika diperlukan
-        });
-    </script>
 </body>
 
 </html>

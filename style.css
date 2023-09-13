@@ -1,174 +1,187 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+/* Reset CSS untuk menghilangkan margin dan padding default */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    box-sizing: border-box;
 }
 
+/* Styling dasar untuk body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Kontainer utama */
 .container {
-    background-color: #fff;
-    margin: 20px auto;
+    max-width: 80%;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
 }
 
-h1 {
+/* Judul halaman */
+h2 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
+/* Judul seksi */
 h4 {
-    text-align: left;
-}
-
-hr {
-    width: 100%;
-    align-items: center;
-}
-.input-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 18px;
     margin-bottom: 10px;
+    margin-top: 20px;
 }
 
-input[type="text"] {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+/* Formulir data */
+.form-data{
+    display: none;
 }
 
-button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 8px;
-}
-
-/* CSS to display buttons horizontally */
-.button-cell {
-    display: flex;
-    gap: 10px; /* Adjust the gap between buttons as needed */
-    align-items: center; /* Vertically center buttons */
-}
-
-/* Style for buttons (optional) */
-.button-cell button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-/* Add hover effect to buttons (optional) */
-.button-cell button:hover {
-    background-color: #0056b3;
-}
-
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-table th,
-table td {
-    padding: 4px;
-    text-align: center;
-    border: 1px solid #e0dcdc;
-}
-
-table th {
-    font-weight: bold;
-    color: #333;
-}
-
-table tr:hover {
-    background-color: #f5f5f5;
-}
-
-table td.actions {
-    text-align: center;
-}
-
-table .btn {
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-table .btn:hover {
-    background-color: #0056b3;
-}
-
-
-.delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-
-
-/* Style untuk form jenis anggaran */
-#jenis-anggaran-form {
-    display: none; /* Form ini akan disembunyikan secara default */
-    margin: 20px;
-}
-
-#jenis-anggaran-table {
-    display: none; /* Tabel ini akan disembunyikan secara default */
-    margin: 20px;
-}
-
-#table-kas-kecil {
+#data-form {
+    margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
-#addData {
-    grid-row: 1;
-    grid-column: 1;
-    justify-self: start;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 14px;
+.form-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-#addData:hover {
+.form-column {
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+/* Form row */
+.form-row {
+    margin-bottom: 10px;
+    grid-column: span 2; /* Menggunakan 2 kolom dalam grid */
+}
+
+/* Label */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Input dan Select */
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Tombol Simpan */
+button[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 8px;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+
+/* Tabel data */
+#data-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#data-table th,
+#data-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+#data-table td {
+    padding: 4px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Container kolom footer */
+.foter-column {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+/* Baris dalam kolom footer */
+.foter-row {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Tanggal */
+.foter-row input[type="date"] {
+    width: 150px; /* Lebar input tanggal */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Input Text */
+.foter-row input[type="text"] {
+    width: 150px; /* Lebar input teks */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* CSS untuk membuat tombol di tengah tabel */
+div.div-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Styling tambahan untuk tombol */
+div.div-item button {
+    background-color: red; /* Ganti warna latar belakang sesuai kebutuhan Anda */
+    color: white; /* Ganti warna teks sesuai kebutuhan Anda */
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+/* Membuat tabel responsif pada perangkat kecil */
+@media (max-width: 768px) {
+    #data-table {
+        overflow-x: auto;
+    }
+}
+
+/* Mengurangi tinggi form */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    #data-form {
+        grid-template-columns: 1fr; /* Kembali ke satu kolom pada perangkat kecil */
+    }
+}

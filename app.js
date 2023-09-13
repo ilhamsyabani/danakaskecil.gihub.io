@@ -1,117 +1,125 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const jenisAnggaranButton = document.getElementById('jenis-anggaran');
-    const laporanKasKecilButton = document.getElementById('laporan-kas-kecil');
-    const jenisAnggaranForm = document.getElementById('jenis-anggaran-form');
-    const jenisAnggaranTable = document.getElementById('jenis-anggaran-table');
+    const formLaporan = document.getElementById('form-laporan-kas-kecil');
+    const tambahLaporanButton = document.getElementById('tambah-data-laporan');
+    const dataForm = document.getElementById("data-form");
+    const dataTable = document.getElementById("data-table");
 
-    const taskInput = document.getElementById("task");
-    const addTaskButton = document.getElementById("addTask");
-    const taskList = document.getElementById("taskList");
-
-    jenisAnggaranButton.addEventListener('click', () => {
+    tambahLaporanButton.addEventListener('click', () => {
         // Menampilkan formulir dan tabel jenis anggaran
-        jenisAnggaranForm.style.display = 'block';
-        jenisAnggaranTable.style.display = 'block';
-
-        // Menyembunyikan formulir atau tabel lain jika ada
-        // Misalnya, menyembunyikan formulir dan tabel laporan kas kecil jika diperlukan
+        formLaporan.style.display = 'block';
     });
 
-    laporanKasKecilButton.addEventListener('click', () => {
-        // Menampilkan formulir dan tabel laporan kas kecil
-        // Disembunyikan formulir dan tabel jenis anggaran jika diperlukan
-    });
+    // Mengecek apakah ada data sebelumnya di session storage
+    const storedData = JSON.parse(sessionStorage.getItem("storedData")) || [];
 
-    const rowIndex = 0;
-    const table = document.querySelector('table tbody');
+    // Menampilkan data yang sudah ada di session storage
+    for (const data of storedData) {
+        addDataToTable(data);
+    }
 
-    // Membuat baris data baru
-    const newRow = table.insertRow(rowIndex);
+    dataForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
+        const tanggalInput = document.getElementById("tanggal");
+        const buktiInput = document.getElementById("bukti");
+        const keteranganInput = document.getElementById("keterangan");
+        const penerimaanInput = document.getElementById("penerimaan");
+        const pengeluaranInput = document.getElementById("pengeluaran");
+        const akunInput = document.getElementById("akun");
+        const nilaiInput = document.getElementById("nilai");
 
-    // Menambahkan sel-sel data ke dalam baris
-    newRow.innerHTML = `
-    <td>2023-08-30</td>
-    <td>001</td>
-    <td>Pembelian barang</td>
-    <td>500</td>
-    <td></td>
-    <td>35000</td>
-    <td></td>
-    <td></td>
-    <td>
-        <div class="button-cell">
-        <button  id="editButton"><i class="fa-solid fa-pen"></i></button>
-        <button id="deleteButton" class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-        </div>
-    </td>
-`;
+        const tanggal = tanggalInput.value.trim();
+        const bukti = buktiInput.value.trim();
+        const keterangan = keteranganInput.value.trim();
+        const penerimaan = penerimaanInput.value.trim();
+        const pengeluaran = pengeluaranInput.value.trim();
+        const akun = akunInput.value.trim();
+        const nilai = nilaiInput.value.trim();
 
-    // Menambahkan baris ke dalam tabel
+        if (tanggal !== "" && bukti !== "") {
+            const newData = {
+                tanggal: tanggal,
+                bukti: bukti,
+                keterangan: keterangan,
+                penerimaan: penerimaan,
+                pengeluaran: pengeluaran,
+                akun: akun,
+                nilai: nilai,
+            };
 
-    addTaskButton.addEventListener("click", function () {
-        const taskText = taskInput.value.trim();
+            // Menambahkan data ke tabel
+            addDataToTable(newData);
 
-        if (taskText !== "") {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-                ${taskText}
-                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-            `;
-            taskList.appendChild(listItem);
-            taskInput.value = "";
+            // Menyimpan data ke session storage
+            storedData.push(newData);
+            sessionStorage.setItem("storedData", JSON.stringify(storedData));
+
+            // Mengosongkan formulir
+            tanggalInput.value = "";
+            buktiInput.value = "";
+            keteranganInput.value = "";
+            penerimaanInput.value = "";
+            pengeluaranInput.value = "";
+            akunInput.value = "";
+            nilaiInput.value = "";
+            formLaporan.style.display = 'none';
         }
     });
 
-    taskList.addEventListener("click", function (e) {
-        if (e.target.classList.contains("delete-btn")) {
-            const listItem = e.target.parentElement;
-            taskList.removeChild(listItem);
+    function addDataToTable(data) {
+        const row = dataTable.insertRow(2);
+        const cellTanggal = row.insertCell(0);
+        const cellBukti = row.insertCell(1);
+        const cellKeterangan = row.insertCell(2);
+        const cellPenerimaan = row.insertCell(3);
+        const cellPengeluaran = row.insertCell(4);
+
+        // Tambahkan sel-sel untuk setiap jenis akun yang mungkin ada
+        const cellAkun1 = row.insertCell(5);
+        const cellAkun2 = row.insertCell(6);
+        const cellAkun3 = row.insertCell(7);
+        const cellAkun4 = row.insertCell(8);
+        const cellAkun5 = row.insertCell(9);
+        const cellTidakan = row.insertCell(10);
+        const divItem = document.createElement("div");
+        divItem.classList.add("div-item");
+        divItem.innerHTML = `
+            <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+        `;
+
+        // Menambahkan event listener untuk tombol hapus
+        const deleteButton = divItem.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", function () {
+            const rowToDelete = this.closest("tr");
+
+            // Menghapus baris dari tabel
+            if (rowToDelete) {
+                rowToDelete.remove();
+            }
+        });
+
+
+
+        cellTanggal.textContent = data.tanggal;
+        cellBukti.textContent = data.bukti;
+        cellKeterangan.textContent = data.keterangan;
+        cellPenerimaan.textContent = data.penerimaan;
+        cellPengeluaran.textContent = data.pengeluaran;
+        cellTidakan.appendChild(divItem);
+
+
+        // Tambahkan nilai ke sel akun yang sesuai
+        if (data.akun = "1") {
+            cellAkun1.textContent = data.nilai;
+        } else if (data.akun = "2") {
+            cellAkun2.textContent = data.nilai;
+        } else if (data.akun = "3") {
+            cellAkun3.textContent = data.nilai;
+        } else if (data.akun = "4") {
+            cellAkun4.textContent = data.nilai;
+        } else if (data.akun = "5") {
+            cellAkun5.textContent = data.nilai;
         }
-    });
-
-    // Function to handle edit button click
-    function handleEditButtonClick() {
-        // Retrieve data from the table row if needed
-        const row = newRow; // Change this to select the specific row you want to edit
-        const cells = row.cells;
-        const date = cells[0].textContent;
-        const number = cells[1].textContent;
-        const description = cells[2].textContent;
-        const debit = cells[3].textContent;
-        const kredit = cells[4].textContent;
-        const jenisAnggaran = cells[5].textContent;
-
-        // You can now implement your edit logic here
-        // For example, open a modal for editing with these values
-        // or populate an edit form with these values
-        // ...
-
-        alert(`Editing row with date: ${date}`);
-    }
-
-    // Function to handle delete button click
-    function handleDeleteButtonClick() {
-        // Retrieve data from the table row if needed
-        const row = newRow; // Change this to select the specific row you want to delete
-
-        // Remove the row from the table
-        const table = document.querySelector('table tbody');
-        table.removeChild(row);
-        // You can implement your delete logic here
-        // For example, confirm the deletion with a modal
-        // or directly remove the row from the table
-        // ...
-
-        alert(`Deleting row with date: ${row}`);
 
     }
-
-    // Add event listeners to the buttons
-    const editButton = document.getElementById('editButton');
-    const deleteButton = document.getElementById('deleteButton');
-
-    editButton.addEventListener('click', handleEditButtonClick);
-    deleteButton.addEventListener('click', handleDeleteButtonClick);
-
 });

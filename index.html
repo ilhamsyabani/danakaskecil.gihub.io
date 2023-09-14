@@ -149,9 +149,9 @@
                     <div style="width: 20%; text-align: center;">
                         <p>mengetahui,</p>
                     </div>
-                    <div style="display: flex;">
-                        <input type="text" id="bukti" name="bukti" placeholder="kota">,
-                        <input type="date" id="tanggal" name="tanggal" required>
+                    <div style="width: 30%; text-align: center;">
+                        <input type="text" id="bukti" name="bukti" placeholder="kota, 00/00/0000"
+                            style="margin-top: 20px; width: 100%; ">
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
@@ -162,12 +162,15 @@
                         <p style="text-align: left;">pemegang kas kecil, </p>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%; padding-top:40px;">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%; padding-top:40px;">
                     <div style="width: 20%; text-align: center;">
-                        <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px; text-align: center;">
+                        <input type="text" id="bukti" name="bukti" placeholder="nama"
+                            style="margin-top: 20px; text-align: center;">
                     </div>
                     <div style="width: 30%; text-align: center;">
-                        <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px; width: 80%; text-align: center;">
+                        <input type="text" id="bukti" name="bukti" placeholder="nama"
+                            style="margin-top: 20px; width: 80%; text-align: center;">
                     </div>
 
                 </div>
@@ -190,20 +193,23 @@
     <script src="app.js"></script>
     <script>
         document.getElementById('generatePdfButton').addEventListener('click', function () {
-            // Select the div element you want to convert to PDF.
-            const content = document.getElementById('contentToConvert');
+    // Select the div element you want to convert to PDF.
+    const content = document.getElementById('contentToConvert');
 
-            // Create an HTML2PDF instance.
-            const pdfOptions = {
-                margin: 10,
-                filename: 'generated.pdf'
-            };
-            const element = content;
-            const pdf = html2pdf(element, pdfOptions);
+    // Buat sebuah instance HTML2PDF.
+    const pdfOptions = {
+        margin:30,
+        filename: 'generated.pdf',
+        jsPDF: { unit: 'mm', format: 'legal', orientation: 'landscape' }
+    };
 
-            // Generate the PDF and save it or trigger a download.
-            pdf.toPdf().from(element).save();
-        });
+    const element = content;
+    const pdf = html2pdf(element, pdfOptions);
+
+    // Generate the PDF and save it or trigger a download.
+    pdf.toPdf().from(element).save();
+});
+
     </script>
 
 </body>

@@ -16,6 +16,7 @@ body {
 .container {
     max-width: 80%;
     margin: 0 auto;
+    margin-top: 2%;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -39,7 +40,8 @@ h4 {
 table{
     font-size: 14px;
     margin: 0;
-    padding: 12px;
+    table-layout: fixed;
+    width: 1100px;
 }
 
 /* Formulir data */
@@ -108,7 +110,6 @@ button[type="submit"]:hover {
 
 /* Tabel data */
 .data-table {
-    width: 100%;
     border-collapse: collapse;
 }
 

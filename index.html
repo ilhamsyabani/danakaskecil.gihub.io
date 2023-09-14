@@ -84,30 +84,6 @@
             <table id="data-table" class="data-table" border="1">
                 <thead>
                     <tr>
-                        <th rowspan="2" style="width: 100px">Tanggal</th>
-                        <th rowspan="2" style="width: 80px">No Bukti</th>
-                        <th rowspan="2" style="width: 200px">Keterangan</th>
-                        <th rowspan="2" style="width: 100px">Penerimaan</th>
-                        <th rowspan="2" style="width: 100px">Pengeluaran</th>
-                        <th colspan="5">Akun</th>
-                        <th rowspan="2" style="width: 80px">Tindakan</th>
-                    </tr>
-                    <tr>
-                        <th style="width: 100px">Konsumsi</th>
-                        <th style="width: 100px">Transportasi</th>
-                        <th style="width: 100px">ATK</th>
-                        <th style="width: 100px">Iklan</th>
-                        <th>Lainnya</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data akan ditambahkan ke sini menggunakan JavaScript -->
-
-                </tbody>
-            </table>
-            <table class="data-table" border="1">
-                <thead style="display:none;">
-                    <tr>
                         <th rowspan="2">Tanggal</th>
                         <th rowspan="2">No Bukti</th>
                         <th rowspan="2">Keterangan</th>
@@ -125,8 +101,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Data akan ditambahkan ke sini menggunakan JavaScript -->
+
+                </tbody>
+            </table>
+            <table class="data-table" border="1">
+                <tbody>
                     <tr>
-                        <td colspan="3" style="width: 690px">Jumlah</td>
+                        <td colspan="3">Jumlah</td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
@@ -134,7 +116,7 @@
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
                         <td><input type="text" id="jumlah" name="jumlah"></td>
-                        <td style="width: 80px"></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td colspan="3">Saldo</td>
@@ -161,18 +143,47 @@
                 </tbody>
                 </tbody>
             </table>
-            <div class="foter-column">
-                <div class="foter-row">
-                    <p>mengetahui,<br>pimpinan </p>
-                    <input type="text" id="bukti" name="bukti" placeholder="nama">
+            <div class="foter-row">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-end; width: 100%; padding-bottom:8px; padding-top:40px;">
+                    <div style="width: 20%; text-align: center;">
+                        <p>mengetahui,</p>
+                    </div>
+                    <div style="display: flex;">
+                        <input type="text" id="bukti" name="bukti" placeholder="kota">,
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                    <div style="width: 20%; text-align: center;">
+                        <p>pimpinan</p>
+                    </div>
+                    <div style="display: flex;  align-items: flex-start; width: 20%;">
+                        <p style="text-align: left;">pemegang kas kecil, </p>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%; padding-top:40px;">
+                    <div style="width: 20%; text-align: center;">
+                        <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px; text-align: center;">
+                    </div>
+                    <div style="width: 30%; text-align: center;">
+                        <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px; width: 80%; text-align: center;">
+                    </div>
+
+                </div>
+                <!-- <div class="foter-row">
+                    <p>mengetahui,</p>
+                    <p style="margin-top: 20px;">pimpinan </p>
+                    <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px;">
                 </div>
                 <div class="foter-row" style="text-align: center;">
                     <div>
                         <input type="text" id="bukti" name="bukti" placeholder="kota">,
                         <input type="date" id="tanggal" name="tanggal" required>
                     </div>
-                    <input type="text" id="bukti" name="bukti" placeholder="nama">
-                </div>
+                    <p style="text-align: left;">pemegang kas keci, </p>
+                    <input type="text" id="bukti" name="bukti" placeholder="nama" style="margin-top: 20px;">
+                </div> -->
             </div>
         </div>
     </div>

@@ -67,7 +67,7 @@ function showData() {
         } else {
             html += "<td>" + " " + "</td>"
         }
-        html += '<td><button class="delete-btn" onclick="deleteData(' + index + ')">Hapus</button><button class="edit-btn" onclick="updateData(' + index + ')">Edit</button></td>';
+        html += '<td class="noprint" ><button class="delete-btn" onclick="deleteData(' + index + ')">Hapus</button><button class="edit-btn" onclick="updateData(' + index + ')">Edit</button></td>';
         html += "</tr>";
     });
 

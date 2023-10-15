@@ -79,8 +79,8 @@
                 <h4>Laporan Dana Kas Kecil</h4>
                 <input style="width: 40%;" type="text" id="namapt" name="namapt" required><br />
             </div>
-            <button type="submit" id="tambah-data-laporan">Tambah Data</button>
-            <button type="submit" id="generatePdfButton">Export Data</button>
+            <button type="submit" id="tambah-data-laporan" class="noprint">Tambah Data</button>
+            <button type="submit" id="generatePdfButton" class="noprint">Export Data</button>
             <table id="data-table" class="data-table" border="1">
                 <thead>
                     <tr>
@@ -198,9 +198,10 @@
 
     // Buat sebuah instance HTML2PDF.
     const pdfOptions = {
-        margin:30,
+        margin:20,
         filename: 'generated.pdf',
-        jsPDF: { unit: 'mm', format: 'legal', orientation: 'landscape' }
+        jsPDF: { unit: 'mm', format: 'legal', orientation: 'landscape' },
+        exclude: 'noprint'
     };
 
     const element = content;
